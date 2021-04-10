@@ -1,0 +1,14 @@
+[push]
+  default = current
+[pull]
+  ff = only
+[rebase]
+  autostash = true
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore_global
+[credential]
+  helper = osxkeychain
+[user]
+  name = muriware
+  email = 16728775+muriware@users.noreply.github.com
