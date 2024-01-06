@@ -5,10 +5,12 @@
 [rebase]
   autostash = true
 [core]
-  editor = vim
-  excludesfile = ~/.gitignore_global
+  editor = nvim
+  excludesfile = $HOME/.config/git/.gitignore_global
 [credential]
   helper = osxkeychain
 [user]
   name = muriware
   email = 16728775+muriware@users.noreply.github.com
+[init]
+  defaultBranch = main
