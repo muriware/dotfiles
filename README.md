@@ -1,25 +1,43 @@
-# dotfiles
+# Dotfiles
+
+My personal dotfiles for setting up and customizing my environment.
 
 ### Install
 
-Run `make install`.
+Clone the repo and run:
+
+```zsh
+cd dotfiles && make install
+```
 
 ### Uninstall
 
-Run `make uninstall`.
+To remove the configurations:
 
-### Link configurations files
+```zsh
+make uninstall
+```
 
-Run `make link`.
+### Final Setup Steps after Installation
 
-### Unlink configurations files
+1. **Install Alfred**:
+   - Visit the [Alfred Help and Support page](https://www.alfredapp.com/help/v4/).
+   - Download and install Alfred 4.
+   - Add license code.
 
-Run `make unlink`.
+2. **Install Font**:
+   - Download [Source Code Pro Nerd Font](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro) from GitHub.
+   - Add it to Font Book.
 
-### Post installation
+3. **iTerm Setup**:
+   - Open iTerm.
+   - Load preferences from dotfiles folder.
 
-1. Download and add [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro) font family to Font Book
-2. Open iTerm and load preferences from this (dotfiles) folder
-3. Relauch iTerm
-4. Inside tmux press `prefix` + `I` to install tmux plugins via tpm
-5. Config ssh
+4. **Restart iTerm**:
+   - Close and reopen iTerm.
+
+5. **Tmux Plugins**:
+   - In tmux, press `prefix` + `I`.
+
+6. **SSH Config**:
+   - Set up SSH as needed.
