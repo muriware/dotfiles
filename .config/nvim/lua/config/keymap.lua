@@ -53,9 +53,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- Edit the Packer.nvim config file
 vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/src/dotfiles/.config/nvim/lua/muriware/packer.lua<CR>")
 
--- Run the 'make_it_rain' command
-vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
-
 -- Source the current file
 vim.keymap.set("n", "<leader><leader>", function()
   vim.cmd("so")

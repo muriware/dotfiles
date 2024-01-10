@@ -28,4 +28,5 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = table.concat(vim.tbl_map(tostring, vim.fn.range(80, 999)), ",")
+vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = table.concat(vim.tbl_map(tostring, vim.fn.range(80, 999)), ",")
