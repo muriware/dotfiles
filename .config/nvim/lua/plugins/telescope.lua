@@ -1,3 +1,5 @@
+local keymap = require('util').keymap
+
 return {
   'nvim-telescope/telescope.nvim',
   branch = '0.1.x',
@@ -8,14 +10,16 @@ return {
   config = function()
     local builtin = require('telescope.builtin')
 
-    vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-    vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-    vim.keymap.set('n', '<leader>ps', function()
+    local grep_string = function ()
       builtin.grep_string({ search = vim.fn.input('Grep > ') })
-    end, {})
-    vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+    end
+
+    keymap('n', '<leader>pf', builtin.find_files, {})
+    keymap('n', '<C-p>', builtin.git_files, {})
+    keymap('n', '<leader>ps', grep_string, {})
+    keymap('n', '<leader>vh', builtin.help_tags, {})
 
     require('telescope').load_extension('undo')
-    vim.keymap.set('n', '<leader>u', '<cmd>Telescope undo<CR>')
+    keymap('n', '<leader>u', '<cmd>Telescope undo<CR>')
   end
 }

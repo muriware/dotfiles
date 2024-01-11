@@ -18,9 +18,10 @@ export EDITOR="nvim"
 
 # Alias
 alias vim="nvim"
-alias ll="ls -lGH"
-alias lla="ls -lGaH"
+alias ll="ls -lGH --color=tty"
+alias lla="ls -lGaH --color=tty"
 alias mkdir="mkdir -p"
+alias tree="tree -laI 'node_modules|.git' --dirsfirst" 
 
 alias notes="vim $HOME/notes.md"
 alias work="vim $HOME/work.md"

@@ -1,3 +1,5 @@
+local keymap = require('util').keymap
+
 return {
   {
     'VonHeikemen/lsp-zero.nvim',
@@ -21,10 +23,8 @@ return {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
       'L3MON4D3/LuaSnip',
       'rafamadriz/friendly-snippets',
       'saadparwaiz1/cmp_luasnip'
@@ -36,14 +36,13 @@ return {
       local cmp = require('cmp')
       local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
-      require("luasnip.loaders.from_vscode").lazy_load()
+      require('luasnip.loaders.from_vscode').lazy_load()
 
       cmp.setup({
         sources = {
           { name = 'nvim_lsp' },
           { name = 'buffer',  keyword_length = 3 },
           { name = 'path',    keyword_length = 2 },
-          { name = 'cmdline', keyword_length = 2 },
           { name = 'luasnip', keyword_length = 2 }
         },
         formatting = lsp_zero.cmp_format(),
@@ -63,32 +62,29 @@ return {
     cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
       'williamboman/mason-lspconfig.nvim'
     },
     config = function()
       local lsp_zero = require('lsp-zero')
       lsp_zero.extend_lspconfig()
 
-      local function setKeymap(mode, key, action, opts)
-        vim.keymap.set(mode, key, function() action() end, opts)
-      end
-
       lsp_zero.on_attach(function(_, bufnr)
-        local opts = { buffer = bufnr, remap = false }
+        local opts = { buffer = bufnr, noremap = true }
 
-        setKeymap('n', 'gd', vim.lsp.buf.definition, opts)
-        setKeymap('n', 'K', vim.lsp.buf.hover, opts)
-        setKeymap('n', '<leader>vws', vim.lsp.buf.workspace_symbol, opts)
-        setKeymap('n', '<leader>vd', vim.diagnostic.open_float, opts)
-        setKeymap('n', '[d', vim.diagnostic.goto_next, opts)
-        setKeymap('n', ']d', vim.diagnostic.goto_prev, opts)
-        setKeymap('n', '<leader>vca', vim.lsp.buf.code_action, opts)
-        setKeymap('n', '<leader>vrr', vim.lsp.buf.references, opts)
-        setKeymap('n', '<leader>vrn', vim.lsp.buf.rename, opts)
-        setKeymap('i', '<C-h>', vim.lsp.buf.signature_help, opts)
+        keymap('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+        keymap('n', 'K', function() vim.lsp.buf.hover() end, opts)
+        keymap('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
+        keymap('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
+        keymap('n', '[d', function() vim.diagnostic.goto_next() end, opts)
+        keymap('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
+        keymap('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
+        keymap('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
+        keymap('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
+        keymap('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
       end)
 
-      require('mason-lspconfig').setup({
+      require('mason-lspconfig').setup {
         ensure_installed = {
           'jsonls',
           'lua_ls',
@@ -97,11 +93,12 @@ return {
         handlers = {
           lsp_zero.default_setup,
           lua_ls = function()
+            -- (Optional) Configure lua language server for neovim
             local lua_opts = lsp_zero.nvim_lua_ls()
             require('lspconfig').lua_ls.setup(lua_opts)
-          end,
+          end
         }
-      })
+      }
 
       vim.diagnostic.config({ virtual_text = true })
     end

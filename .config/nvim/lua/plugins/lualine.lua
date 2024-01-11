@@ -1,9 +1,9 @@
 return {
   'nvim-lualine/lualine.nvim',
-  event = 'VimEnter',
   dependencies = {
     'nvim-tree/nvim-web-devicons'
   },
+  event = 'VimEnter',
   opts = {
     options = {
       icons_enabled = true,

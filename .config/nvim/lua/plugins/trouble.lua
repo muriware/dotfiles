@@ -1,17 +1,23 @@
 return {
   'folke/trouble.nvim',
-  keys = { '<leader>xx', '<leader>xw', '<leader>xd', '<leader>xq', '<leader>xl', 'gR' },
   dependencies = {
     'nvim-tree/nvim-web-devicons'
   },
-  config = function()
-    local trouble = require('trouble')
-
-    vim.keymap.set('n', '<leader>xx', function() trouble.toggle() end)
-    vim.keymap.set('n', '<leader>xw', function() trouble.toggle('workspace_diagnostics') end)
-    vim.keymap.set('n', '<leader>xd', function() trouble.toggle('document_diagnostics') end)
-    vim.keymap.set('n', '<leader>xq', function() trouble.toggle('quickfix') end)
-    vim.keymap.set('n', '<leader>xl', function() trouble.toggle('loclist') end)
-    vim.keymap.set('n', 'gR', function() require("trouble").toggle('lsp_references') end)
-  end
+  opts = {},
+  cmd = {
+    'TroubleToggle',
+    'TroubleToggle workspace_diagnostics',
+    'TroubleToggle document_diagnostics',
+    'TroubleToggle quickfix',
+    'TroubleToggle loclist',
+    'TroubleToggle lsp_references',
+  },
+  keys = {
+    { '<leader>xx', '<cmd>TroubleToggle<CR>' },
+    { '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<CR>' },
+    { '<leader>xd', '<cmd>TroubleToggle document_diagnostics<CR>' },
+    { '<leader>xq', '<cmd>TroubleToggle quickfix<CR>' },
+    { '<leader>xl', '<cmd>TroubleToggle loclist<CR>' },
+    { 'gR',         '<cmd>TroubleToggle lsp_references<CR>' }
+  }
 }

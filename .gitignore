@@ -1,5 +1,2 @@
-# Ignore Packer.nvim compiled plugins file
-.config/nvim/plugin/packer_compiled.lua
-
 # Ignore tmux plugins directory
 .config/tmux/plugins/
