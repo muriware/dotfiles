@@ -1,9 +1,6 @@
 return {
-  'eandrju/cellular-automaton.nvim',
-  cmd = {
-    'CellularAutomaton make_it_rain'
-  },
+  "eandrju/cellular-automaton.nvim",
   keys = {
-    { '<leader>mr', '<cmd>CellularAutomaton make_it_rain<CR>' }
-  }
+    { "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>" },
+  },
 }

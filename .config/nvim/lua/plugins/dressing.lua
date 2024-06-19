@@ -1,5 +1,5 @@
 return {
-  'stevearc/dressing.nvim',
-  event = 'VimEnter',
-  opts = {}
+  "stevearc/dressing.nvim",
+  event = "VimEnter",
+  opts = {},
 }

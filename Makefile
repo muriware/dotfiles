@@ -2,7 +2,7 @@
 	install-homebrew-packages compile-terminfo \
 	install-tmux-plugin-manager setup-symlinks cleanup-symlinks
 
-PACKAGES ?= coreutils exiftool git neovim node pandoc ripgrep tig tmux tree webp
+PACKAGES ?= coreutils exiftool git mactex neovim node pandoc ripgrep tig tmux tree webp
 CASKS ?= anki google-chrome iterm2 keepassxc rectangle slack
 
 DOTFILES ?= $(shell ls -dp .[^.]* | grep -E '(\.dircolors|\.zshrc)')
