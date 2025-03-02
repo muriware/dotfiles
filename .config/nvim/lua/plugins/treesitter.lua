@@ -1,8 +1,11 @@
+-- plugins/treesitter.lua
+-- Syntax highlighting and code parsing
+
 return {
   "nvim-treesitter/nvim-treesitter",
   main = "nvim-treesitter.configs",
   build = ":TSUpdate",
-  event = "BufRead",
+  event = { "BufReadPost", "BufNewFile" },
   opts = {
     ensure_installed = {
       "bash",
@@ -19,6 +22,7 @@ return {
       "lua",
       "make",
       "markdown",
+      "markdown_inline", -- For better markdown support
       "python",
       "query",
       "rust",
@@ -35,6 +39,20 @@ return {
     auto_install = true,
     highlight = {
       enable = true,
+      additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true,
+    },
+    -- Incremental selection based on syntax tree
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "<CR>",
+        node_incremental = "<CR>",
+        node_decremental = "<BS>",
+        scope_incremental = "<TAB>",
+      },
     },
   },
 }

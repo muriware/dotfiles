@@ -1,4 +1,5 @@
 # TERMINFO for tmux-256color with italic escape sequences
 tmux-256color-italic|tmux with 256 colors and italic,
-  sitm=\E[3m, ritm=\E[23m,
+  sitm=\E[3m,
+  ritm=\E[23m,
   use=xterm-256color,
