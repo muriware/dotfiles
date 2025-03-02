@@ -1,4 +1,5 @@
 # TERMINFO for xterm-256color with italic escape sequences
 xterm-256color-italic|xterm with 256 colors and italic,
-  sitm=\E[3m, ritm=\E[23m,
+  sitm=\E[3m,
+  ritm=\E[23m,
   use=xterm-256color,

@@ -1,3 +1,6 @@
+-- plugins/lualine.lua
+-- Status line configuration
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
@@ -10,19 +13,34 @@ return {
       theme = "tokyonight",
       section_separators = { left = "", right = "" },
       component_separators = { left = "|", right = "|" },
+      disabled_filetypes = {
+        statusline = {},
+        winbar = {},
+      },
+      globalstatus = true,
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { { "branch", icon = "" } },
-      lualine_c = { { "filename", file_status = true, path = 0 } },
-      lualine_x = {
+      lualine_b = {
+        { "branch", icon = "" },
+      },
+      lualine_c = {
+        { "filename", file_status = true, path = 0 },
+        { "diff", symbols = { added = " ", modified = " ", removed = " " } },
         {
           "diagnostics",
           sources = { "nvim_diagnostic" },
           symbols = { error = " ", warn = " ", info = " ", hint = " " },
         },
+      },
+      lualine_x = {
+        {
+          "filetype",
+          icon = true,
+          colored = false,
+          padding = { left = 0, right = 1 },
+        },
         "encoding",
-        "filetype",
       },
       lualine_y = { "progress" },
       lualine_z = { "location" },
@@ -34,6 +52,9 @@ return {
       lualine_x = { "location" },
       lualine_y = {},
       lualine_z = {},
+    },
+    extensions = {
+      "quickfix",
     },
   },
 }
