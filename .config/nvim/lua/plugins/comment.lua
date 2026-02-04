@@ -1,5 +1,5 @@
 -- plugins/comment.lua
--- Code commenting plugin
+-- Line and block commenting.
 
 return {
   "numToStr/Comment.nvim",

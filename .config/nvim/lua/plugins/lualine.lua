@@ -1,24 +1,21 @@
 -- plugins/lualine.lua
--- Status line configuration
+-- Statusline.
 
 return {
   "nvim-lualine/lualine.nvim",
+  event = "VimEnter",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  event = "VimEnter",
   opts = {
     options = {
-      icons_enabled = true,
       theme = "tokyonight",
+      icons_enabled = true,
+      globalstatus = true,
       section_separators = { left = "", right = "" },
       component_separators = { left = "|", right = "|" },
-      disabled_filetypes = {
-        statusline = {},
-        winbar = {},
-      },
-      globalstatus = true,
     },
+
     sections = {
       lualine_a = { "mode" },
       lualine_b = {
@@ -34,27 +31,18 @@ return {
         },
       },
       lualine_x = {
-        {
-          "filetype",
-          icon = true,
-          colored = false,
-          padding = { left = 0, right = 1 },
-        },
+        { "filetype", icon = true, colored = false },
         "encoding",
       },
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },
+
     inactive_sections = {
-      lualine_a = {},
-      lualine_b = {},
-      lualine_c = { { "filename", file_status = true, path = 1 } },
+      lualine_c = { { "filename", path = 1 } },
       lualine_x = { "location" },
-      lualine_y = {},
-      lualine_z = {},
     },
-    extensions = {
-      "quickfix",
-    },
+
+    extensions = { "quickfix" },
   },
 }

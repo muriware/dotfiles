@@ -1,5 +1,5 @@
 -- config/keymap.lua
--- Neovim key mappings and shortcuts
+-- Neovim key mappings and shortcuts.
 
 local keymap = require("util").keymap
 

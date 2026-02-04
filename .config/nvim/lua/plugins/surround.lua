@@ -1,8 +1,8 @@
 -- plugins/surround.lua
--- Enhanced surround operations for text objects
+-- Text object surrounding (quotes, brackets, tags).
 
 return {
   "kylechui/nvim-surround",
-  event = { "VeryLazy" },
+  event = "VeryLazy",
   opts = {},
 }
