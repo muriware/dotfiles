@@ -1,15 +1,19 @@
 -- util/init.lua
--- Core utility functions for Neovim configuration
+-- Small, helper functions shared across the config.
 
 local M = {}
 
--- Define keymappings with sensible defaults
--- @param mode (string|table): Mode shortname or list of modes ("n", "i", "v", etc.)
--- @param lhs (string): Left-hand side of the mapping (the key to press)
--- @param rhs (string|function): Right-hand side of the mapping (the command to execute)
--- @param opts (table, optional): Options for the mapping (defaults to {noremap = true})
+-- Keymap helper with sensible defaults.
+--
+-- @param mode (string|table): mode(s), e.g. "n", "i", { "n", "v" }
+-- @param lhs  (string): key sequence
+-- @param rhs  (string|function): command or callback
+-- @param opts (table|nil): keymap options (defaults to noremap = true)
 function M.keymap(mode, lhs, rhs, opts)
-  opts = opts or { noremap = true }
+  opts = opts or {}
+  if opts.noremap == nil then
+    opts.noremap = true
+  end
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 

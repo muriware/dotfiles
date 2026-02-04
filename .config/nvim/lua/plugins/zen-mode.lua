@@ -1,21 +1,21 @@
 -- plugins/zenmode.lua
--- Distraction-free writing mode
+-- Distraction-free mode for reading, writing, and focused thinking.
 
 return {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",
-  opts = {
-    window = {
-      width = 90,
-    },
-    on_open = function()
-      vim.cmd("setlocal spell") -- Enable spell checking in zen mode
-    end,
-    on_close = function()
-      vim.cmd("setlocal nospell")
-    end,
-  },
   keys = {
     { "<leader>sm", "<cmd>ZenMode<CR>", desc = "Zen Mode" },
+  },
+  opts = {
+    window = {
+      width = 95, -- wide enough for code + prose, narrow enough to reduce eye travel
+    },
+    on_open = function()
+      vim.opt_local.spell = true
+    end,
+    on_close = function()
+      vim.opt_local.spell = false
+    end,
   },
 }

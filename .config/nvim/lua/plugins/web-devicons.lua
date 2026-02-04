@@ -1,11 +1,11 @@
 -- plugins/devicons.lua
--- File icons for Neovim plugins
+-- Filetype icons for UI plugins (statusline, file explorers, pickers).
 
 return {
   "nvim-tree/nvim-web-devicons",
   lazy = true,
   opts = {
     default = true,
-    strict = true, -- Match only with exact match of file name
+    strict = true, -- Only match exact filenames; avoids incorrect icon guesses
   },
 }

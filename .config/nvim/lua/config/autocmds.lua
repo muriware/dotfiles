@@ -1,10 +1,11 @@
 -- config/autocmds.lua
--- Neovim autocommands configuration
+-- Neovim autocommands configuration.
 
--- Create autocmd group for window focus
-local cursorline_group = vim.api.nvim_create_augroup("CursorLineOnlyActive", { clear = true })
+local augroup = vim.api.nvim_create_augroup
 
--- Enable cursorline only for active window
+local cursorline_group = augroup("CursorLineOnlyActive", { clear = true })
+
+-- Enable cursorline only in the active window.
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "InsertLeave" }, {
   group = cursorline_group,
   callback = function()
@@ -14,7 +15,7 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "InsertLeave" }, {
   end,
 })
 
--- Disable cursorline for inactive windows
+-- Disable cursorline when the window loses focus or while typing.
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave", "InsertEnter" }, {
   group = cursorline_group,
   callback = function()
